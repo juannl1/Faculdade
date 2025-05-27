@@ -2,7 +2,7 @@ import random, time, math
 
 print("Sorteador de Times")
 
-quantidade = int(input("Quantas pessoas vc quer sortear -> "))
+quantidade = int(input("Quantas pessoas você quer sortear -> "))
 t1 = (quantidade % 2) #modulo tem q ser == a 0 para a quantidade de pessoas ser par
 if t1 != 0:
     print("Você está sorteando um time com número impar, um dos times ficará com 1 a mais.")
