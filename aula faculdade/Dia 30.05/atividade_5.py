@@ -1,5 +1,8 @@
 estudantes = {}
-for i in range(1, 3):
+
+quantidade_estudantes = int(input("Quantidade de estudantes: "))
+
+for i in range(1, quantidade_estudantes + 1):
     nome = input(f"Digite o nome do estudante {i}: ")
     notas = []
     for j in range(1, 4):
