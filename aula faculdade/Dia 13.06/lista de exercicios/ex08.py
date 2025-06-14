@@ -11,7 +11,7 @@ def media3(n1, n2, n3):
 
     else: 
         print(f"Sua média foi {media}. Reprovado.")
-n1 = int(input("Nota 1: "))
-n2 = int(input("Nota 2: "))
-n3 = int(input("Nota 3: "))
+n1 = float(input("Nota 1: "))
+n2 = float(input("Nota 2: "))
+n3 = float(input("Nota 3: "))
 media3(n1, n2, n3)

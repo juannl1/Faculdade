@@ -7,11 +7,12 @@ Exiba as coordenadas separadamente (uma por linha).
 Mostre o valor da coordenada y.
 """
 
+print("Coordernadas\n")
 tupla = ()
 lista = list(tupla)
 
 for c in range(1, 4):
-    n1 = int(input(f"digite o {c}° valor:  "))
+    n1 = int(input(f"Digite o {c}° valor:  "))
     lista.append(n1)
 tupla_atualizada = tuple(lista)
 print(tupla_atualizada)

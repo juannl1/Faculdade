@@ -7,5 +7,7 @@ def tabuada(numero):
     for c in range(1, 11):
         total = numero * c
         print(f"{numero} x {c} = {total}")
+
+        
 n1 = int(input("Digite o número que você deseja tabuar: "))
 tabuada(n1)

@@ -6,6 +6,9 @@ Mostre os nomes que aparecem nos dois conjuntos.
 
 Mostre os nomes que aparecem em pelo menos um dos conjuntos (união).
 """
+
+
+
 lista1 = []
 lista2 = []
 for c in range(1, 4):
