@@ -4,7 +4,7 @@ import time, math
 print("1. Tabuada\n2. Cálculo específico\n\n*Responda com números*")
 c1 = int(input("\nVocê quer alguma tabuada ou algum cálculo específico: "))
 
-#Código da Tabuada abaixo 
+#Código da Tabuada abaixo
 if c1 == 1:
     print("\n   TABUADA   ")
     time.sleep(0.9)

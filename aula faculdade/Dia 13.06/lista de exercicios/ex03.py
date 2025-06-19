@@ -7,21 +7,27 @@ Mostre os nomes que aparecem nos dois conjuntos.
 Mostre os nomes que aparecem em pelo menos um dos conjuntos (união).
 """
 
+nome1 = str(input("Nome 1: "))
+nome2 = str(input("Nome 2: "))
+nome3 = str(input("Nome 3: "))
 
+print("\nConjunto 2\n")
 
-lista1 = []
-lista2 = []
-for c in range(1, 4):
-    n1 = str(input(f"Digite o {c}° nome para o primeiro conjunto: "))
-    lista1.append(n1)
-print("\nSegundo Conjunto...\n")
-for c in range(1, 4):
-    n2 = str(input(f"Digite o {c}° nome para o segundo conjunto: "))
-    lista2.append(n2)
-conjunto1 = set(lista1)
-conjunto2 = set(lista2)
-print(f"O primeiro conjunto é: {conjunto1}\nO segundo conjunto é: {conjunto2}")
-uniao = conjunto1.union(conjunto2)
+nome4 = str(input("Nome 1: "))
+nome5 = str(input("Nome 2: "))
+nome6  = str(input("Nome 3: "))
+
+conjunto1 = {nome1, nome2, nome3}
+conjunto2 = {nome4, nome5, nome6}
+print(f"Conjunto 1: {conjunto1}")
+print(f"Conjunto 2: {conjunto2}")
+
 intersecao = conjunto1.intersection(conjunto2)
-print(f"\nUnião: {uniao}\n")
-print(f"Interseção: {intersecao}\n")
+
+uniao = conjunto1.union(conjunto2)
+if intersecao == set():
+    print("Não tem nomes iguais, sem interseção")
+
+else:
+    print(f"Nomes que aparecem no mesmo conjunto: {intersecao}")
+print(f"A união dos 2 conjunto de nomes são : {uniao}")

@@ -11,6 +11,7 @@ Relatório
 
 def linhas():
     print(40*"-")
-print("Relatório")
 
+linhas()
+print("Relatório")
 linhas()
