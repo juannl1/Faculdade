@@ -30,10 +30,14 @@ for c in range(1, qtd_alunos + 1):
     alunos["idade"] = int(input("Idade: "))
     alunos["curso"] = str(input("Curso: "))
     disciplinas["disciplina"] = str(input("Disciplina: "))
+    c + 1
+    print(f"\n{c}° Aluno cadastrado.\n")
     cadastros_aluno.append(alunos)
     disciplinasLista.append(disciplinas)
 print(cadastros_aluno)
 print(disciplinas)
+
+
 
 
 #incompleto
