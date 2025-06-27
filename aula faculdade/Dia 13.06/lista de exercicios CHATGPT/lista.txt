@@ -1,0 +1,91 @@
+🟡 1️⃣ Listas — Manipulação e Cálculo
+Peça ao usuário para digitar 6 números e armazene-os em uma lista. Depois:
+
+Exiba a média dos números.
+
+Exiba os números em ordem crescente.
+
+Exiba apenas os números pares da lista.
+
+🟢 2️⃣ Tuplas — Acesso por índice
+Crie uma tupla com quatro nomes digitados pelo usuário. Depois:
+
+Mostre o primeiro e o último nome.
+
+Verifique se o nome "Maria" está na tupla.
+
+Exiba todos os nomes, um por linha.
+
+🔵 3️⃣ Conjuntos — Operações de conjunto
+Solicite dois conjuntos de cores preferidas de duas pessoas diferentes. Depois:
+
+Mostre as cores em comum.
+
+Mostre as cores que só a primeira pessoa gosta.
+
+Verifique se os conjuntos são disjuntos (sem elementos em comum).
+
+🟠 4️⃣ Dicionário — Dados pessoais
+Crie um dicionário com os seguintes dados de uma pessoa:
+
+Nome
+
+Idade
+
+Profissão
+
+Salário
+
+Depois:
+
+Mostre os dados formatados.
+
+Aumente o salário em 10% e mostre o novo valor.
+
+Verifique se a chave "endereço" existe no dicionário.
+
+🟣 5️⃣ Laço for com range e list
+Crie um programa que gere uma lista com os quadrados dos números de 1 a 10. Depois:
+
+Exiba os valores com for e enumerate, mostrando índice e valor.
+
+Exiba a soma dos valores da lista.
+
+🟤 6️⃣ Função sem parâmetro
+Crie uma função chamada cabecalho() que exiba o seguinte:
+
+diff
+Copiar
+Editar
+======== INÍCIO DO SISTEMA ========
+E outra função chamada rodape() que exiba:
+
+diff
+Copiar
+Editar
+======== FIM DO SISTEMA ==========
+Utilize as duas funções no seu programa principal.
+
+🔴 7️⃣ Função com parâmetro (calculadora simples)
+Crie uma função chamada calcula(operacao, a, b) que receba uma operação (+, -, *, /) e dois números. Retorne o resultado da operação.
+
+No programa, peça ao usuário os dados e exiba o resultado.
+
+⚫ 8️⃣ Função com retorno (verificação)
+Crie uma função chamada eh_par(n) que retorna True se o número for par e False se for ímpar. Use a função para verificar vários números em uma lista.
+
+⚪ 9️⃣ Função com conjuntos
+Crie duas listas de linguagens de programação aprendidas por dois alunos. Transforme em conjuntos e use uma função linguagens_em_comum(l1, l2) que retorne as linguagens em comum. Mostre o resultado.
+
+🟡 🔟 Escopo de variáveis
+Crie uma variável global mensagem = "Olá, mundo!". Faça uma função que crie uma variável local com o mesmo nome, mas diga "Olá do escopo local!". Mostre as duas mensagens, dentro e fora da função.
+
+✅ Desafio bônus — Cadastro com funções
+Crie um programa com as seguintes funções:
+
+cadastrar_aluno(): cadastra um aluno (nome, idade, curso, conjunto de disciplinas).
+
+mostrar_aluno(aluno): exibe os dados do aluno.
+
+Cadastre dois alunos e exiba os dados de cada um usando a função.
+
