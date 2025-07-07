@@ -1,4 +1,4 @@
-import random
+import random, time
 
 lista_de_bets = [
     #Futebol
@@ -101,25 +101,64 @@ lista_sim_ou_nao = ["Sim", "Não"]
 sim_ou_nao = random.choice(lista_sim_ou_nao)
 
 
-
-
-#Início
-print(20*"=","APOSTE JÁ", 20*"=")
-
-print("\n\nBem vindo a APOSTE JÁ, a casa de aposta que te da 50% de vencer\n")
-print("Vamos Começar...\n\n")
-
-
 def funcionamento_da_casa_de_apostas():
     print(bet_sorteada)
-    print(f"Odds:\nSim: {lista_de_odds[posição_bet_sorteada][1]}\nNão: {lista_de_odds[posição_bet_sorteada][3]}")
-    aposta_reais = float("Valor da aposta: ")
+    print(f"\nOdds:\n\nSim: ODD: {lista_de_odds[posição_bet_sorteada][1]}\nNão: ODD: {lista_de_odds[posição_bet_sorteada][3]}")
 
+    decisao = int(input("1. Sim\n2. Não\n= "))
+    while True:
+        if decisao == 1 or decisao == 2:
+            break
+        else:
+            print("\nTente novamente...\n\n")
+            time.sleep(1)
+            decisao = int(input("1. Sim\n2. Não\n= "))
+
+            
+        
+        
+    aposta = float(input("\nValor da aposta: "))
+    odd = lista_de_odds[posição_bet_sorteada][1]
+    
+
+    resposta = sim_ou_nao
+    if resposta == "Sim" and decisao == 1:
+        for x in range(1, 4):
+            print(f"{x}")
+            time.sleep(0.5)
+        print("Você ganhou")
+        recompensa = aposta * lista_de_odds[posição_bet_sorteada][1]
+        time.sleep(1.5)
+        print(f"Seu saldo: {recompensa}")
+
+    elif resposta == "Sim" and decisao == 2:
+        print("Você perdeu")
+
+    elif resposta == "Não" and decisao == 2:
+        for x in range(1, 4):
+            print(f"{x}")
+            time.sleep(0.5)
+        print("Você ganhou")
+        recompensa = aposta * lista_de_odds[posição_bet_sorteada][3]
+        print(f"Seu saldo: {recompensa}")
+
+    elif resposta == "Não" and decisao == 1:
+        print("Você perdeu")
+
+    else:
+        print("Decisão inválida")
     
 
 
-#Início
+
+
+
+
+
+"""#Início
 print(20*"=","APOSTE JÁ", 20*"=")
 
 print("\n\nBem vindo a APOSTE JÁ, a casa de aposta que te da 50% de vencer\n")
-print("Vamos Começar...\n\n")
+print("Vamos Começar...\n\n")"""
+
+funcionamento_da_casa_de_apostas()
