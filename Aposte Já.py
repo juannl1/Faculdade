@@ -116,217 +116,91 @@ saldo_na_conta = [
 ]
 
 
-bet_sorteada = random.choice(lista_de_bets)
-posição_bet_sorteada = lista_de_bets.index(bet_sorteada)
-lista_sim_ou_nao = ["Sim", "Não"]
-sim_ou_nao = random.choice(lista_sim_ou_nao)
-sorteando_saldo_do_usuario = random.choice(saldo_na_conta)
-saldo_do_usuario = sorteando_saldo_do_usuario
 
 
+def rodar_aposta(saldo_atual):
+    bet_sorteada = random.choice(lista_de_bets)
+    posição_bet_sorteada = lista_de_bets.index(bet_sorteada)
+    sim_ou_nao = random.choice(["Sim", "Não"])
 
-#Início
-print(20*"=","APOSTE JÁ", 20*"=")
-
-print("\n\nBem vindo a APOSTE JÁ, a casa de aposta que te da 50% de vencer\n")
-print("Vamos Começar...\n\n")
-time.sleep(3)
-
-def iniciando_programa_principal(bet_sorteada, posição_bet_sorteada, sim_ou_nao, saldo_do_usuario):
-    
-    print("Antes de começar, vamos sortear o seu saldo para apostar...")
-    time.sleep(1)
-    for x in range(1, 4):
-        print(".")
-        time.sleep(1)
-    
-    print(f"R$ {saldo_do_usuario} de freebet")
-    time.sleep(1)
-    print("\nAgora sim, vamos começar.\n\n")
+    print(f"\n\n{bet_sorteada}")
+    print(f"\nOdds:\nSim: ODD: {lista_de_odds[posição_bet_sorteada][1]}\nNão: ODD: {lista_de_odds[posição_bet_sorteada][3]}")
     time.sleep(2)
-    
-    
-    print(bet_sorteada)
-    time.sleep(2.5)
-    time.sleep(1)
-    print(f"\nOdds:\n\nSim: ODD: {lista_de_odds[posição_bet_sorteada][1]}\nNão: ODD: {lista_de_odds[posição_bet_sorteada][3]}")
-    time.sleep(3)
 
-
-    decisao = int(input("1. Sim\n2. Não\n= "))
     while True:
-        if decisao == 1 or decisao == 2:
-            break
-        elif decisao == ValueError:
-            print("\nTente novamente...\n\n")
-            time.sleep(1)
+        try:
             decisao = int(input("1. Sim\n2. Não\n= "))
-        else:
-            print("\nTente novamente...\n\n")
-            time.sleep(1)
-            decisao = int(input("1. Sim\n2. Não\n= "))
-        
-        
-            
-    print(f"Seu saldo de freebet: R${saldo_do_usuario}")
-    aposta = float(input("\nValor da aposta: "))
-    while True:
-        if aposta <= saldo_do_usuario:
-            break
-        else:
-            print("Você não tem esse valor")
-            time.sleep(1)
-            aposta = float(input("\nValor da aposta: "))
+            if decisao in [1, 2]:
+                break
+        except ValueError:
+            pass
+        print("\nTente novamente...\n")
 
-    saldo_restante = saldo_do_usuario - aposta
+    print(f"Seu saldo de freebet: R${saldo_atual:.2f}")
+    
+    while True:
+        try:
+            aposta = float(input("Valor da aposta: "))
+            if aposta <= saldo_atual and aposta > 0:
+                break
+            print("Você não tem esse valor.")
+        except ValueError:
+            print("Digite um número válido.")
+
+    saldo_restante = saldo_atual - aposta
     green_sim = (aposta * lista_de_odds[posição_bet_sorteada][1]) + saldo_restante
     green_nao = (aposta * lista_de_odds[posição_bet_sorteada][3]) + saldo_restante
 
     resposta = sim_ou_nao
-    if resposta == "Sim" and decisao == 1:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
-        print("Você ganhou!!!!")
-        valor_final = green_sim
-        time.sleep(1.5)
-
-    elif resposta == "Sim" and decisao == 2:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
-        print("Você perdeu, Que pena")
-        valor_final = saldo_restante
-        time.sleep(1.5)
-
-    elif resposta == "Não" and decisao == 2:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-        
-        print("Você ganhou!!!!")
-        valor_final = green_nao
-        time.sleep(1.5)
-
-    elif resposta == "Não" and decisao == 1:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
-        print("Você perdeu. Que pena")
-        valor_final = saldo_restante
-        time.sleep(1.5)
-    else:
-        print("Decisão inválida")
-    
-    return valor_final #saldo final
-    
-
-saldo_final = iniciando_programa_principal(bet_sorteada, posição_bet_sorteada, sim_ou_nao, saldo_do_usuario)
-print(f"[INFO] O saldo final ficou em R${saldo_final:.2f} em conta")
-
-
-def continuação_do_programa_principal(bet_sorteada, posição_bet_sorteada, sim_ou_nao, saldo_do_usuario):
-
-
-    print("Ok, Vamos continuar")
-    time.sleep(1)
-
-    print(f"Você tem R$ {saldo_final:.2f} de freebet")
-    time.sleep(1)
-    print(bet_sorteada)
-    time.sleep(2.5)
-    
-    print(f"\nOdds:\n\nSim: ODD: {lista_de_odds[posição_bet_sorteada][1]}\nNão: ODD: {lista_de_odds[posição_bet_sorteada][3]}")
-    time.sleep(3)
-
-    decisao = int(input("1. Sim\n2. Não\n= "))
-    while True:
-        if decisao == 1 or decisao == 2:
-            break
-        elif decisao == ValueError:
-            print("\nTente novamente...\n\n")
-            time.sleep(1)
-            decisao = int(input("1. Sim\n2. Não\n= "))
-        else:
-            print("\nTente novamente...\n\n")
-            time.sleep(1)
-            decisao = int(input("1. Sim\n2. Não\n= "))
-
-    print(f"Seu saldo de freebet: R${saldo_final:.2f}")
-    aposta = float(input("\nValor da aposta: "))
-    while True:
-        if aposta <= saldo_final:
-            break
-        else:
-            print("Você não tem esse valor")
-            time.sleep(1)
-            aposta = float(input("\nValor da aposta: "))
-
-    saldo_restante = saldo_do_usuario - aposta
-    green_sim = (aposta * lista_de_odds[posição_bet_sorteada][1]) + saldo_restante
-    green_nao = (aposta * lista_de_odds[posição_bet_sorteada][3]) + saldo_restante
-
-    resposta = sim_ou_nao
+    for x in range(1, 4):
+        print(f"{x}")
+        time.sleep(0.5)
 
     if resposta == "Sim" and decisao == 1:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
         print("Você ganhou!!!!")
-        valor_final = green_sim
-        time.sleep(1.5)
-
+        novo_saldo = green_sim
     elif resposta == "Sim" and decisao == 2:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
-        print("Você perdeu, Que pena")
-        valor_final = saldo_restante
-        time.sleep(1.5)
-
+        print("Você perdeu, que pena.")
+        novo_saldo = saldo_restante
     elif resposta == "Não" and decisao == 2:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-        
         print("Você ganhou!!!!")
-        valor_final = green_nao
-        time.sleep(1.5)
-
+        novo_saldo = green_nao
     elif resposta == "Não" and decisao == 1:
-        for x in range(1, 4):
-            print(f"{x}")
-            time.sleep(0.5)
-
-        print("Você perdeu. Que pena")
-        valor_final = saldo_restante
-        time.sleep(1.5)
+        print("Você perdeu, que pena.")
+        novo_saldo = saldo_restante
     else:
-        print("Decisão inválida")
-    return valor_final
+        print("Decisão inválida.")
+        novo_saldo = saldo_restante
 
-saldo_final_continuação = continuação_do_programa_principal(bet_sorteada, posição_bet_sorteada, sim_ou_nao, saldo_do_usuario)
-print(f"[INFO] O saldo final ficou em R${saldo_final_continuação:.2f} em conta")
+    print(f"Saldo atual: R${novo_saldo:.2f}")
+    return novo_saldo
 
-if saldo_final_continuação <= 5:
-    while True:
-        decisão = int(input("Você deseja continuar apostando?\n1.Sim\n2.Não\n= "))
-        if decisão == 1:
-            print(f"[INFO] O saldo final ficou em R${saldo_final:.2f} em conta")
-            programa_secundario = continuação_do_programa_principal(bet_sorteada, posição_bet_sorteada, sim_ou_nao, saldo_do_usuario)
-        else:
-            print("A aposta mínima é R$ 5.00")
-            print(f"[INFO] O saldo final ficou em R${saldo_final:.2f} em conta")
-            break
+#Iniciando a casa de aposta
 
+print(20*"=","APOSTE JÁ", 20*"=")
+print("\n\nBem-vindo à APOSTE JÁ, a casa de aposta que te dá 50% de vencer\n")
+print("Vamos começar...\n\n")
+time.sleep(2)
 
+#saldo inicial
+saldo_inicial = random.choice(saldo_na_conta)
+print("Antes de começar, vamos sortear o seu saldo para apostar...")
+for _ in range(3):
+    print(".")
+    time.sleep(1)
+print(f"Você recebeu R$ {saldo_inicial:.2f} de freebet!")
+time.sleep(2)
 
+#primeira aposta
+saldo_atual = rodar_aposta(saldo_inicial)
 
+# Enquanto quiser continuar e tiver saldo
+while saldo_atual >= 5:
+    continuar = input("\nDeseja continuar apostando? (s/n): ").lower()
+    if continuar == "s":
+        saldo_atual = rodar_aposta(saldo_atual)
+    else:
+        break
 
-
-
+#Saldo final
+print(f"\nObrigado por jogar! Seu saldo final é R${saldo_atual:.2f}")
