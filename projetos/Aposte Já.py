@@ -129,7 +129,7 @@ def rodar_aposta(saldo_atual):
 
     while True:
         try:
-            decisao = int(input("1. Sim\n2. Não\n= "))
+            decisao = int(input("1. Sim | 2. Não\n\n= "))
             if decisao in [1, 2]:
                 break
         except ValueError:
