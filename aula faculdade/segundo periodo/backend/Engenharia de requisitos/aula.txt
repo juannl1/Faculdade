@@ -1,0 +1,2 @@
+ciclo de vida do desenvolvimento de software
+sistemas não funcionais, funcionais e Normativos
