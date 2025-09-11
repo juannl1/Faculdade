@@ -1,0 +1,2 @@
+conceito e domínio == "contexto no qual o sistema opera"
+
