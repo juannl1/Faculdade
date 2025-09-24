@@ -8,7 +8,7 @@ altura_do_usuario = float(input("Digite sua altura > > > "))
 
 calculo_imc = (peso_do_usuario/altura_do_usuario) / altura_do_usuario
 
-print(f"\nO seu IMC (ÍNDICE DE MASSA CORPORAL) é {calculo_imc}")
+print(f"\nO seu IMC (ÍNDICE DE MASSA CORPORAL) é {calculo_imc:.2f}")
 
 if calculo_imc < 18.5: #abaixo do peso
     print("Classificação: Abaixo do peso...")
