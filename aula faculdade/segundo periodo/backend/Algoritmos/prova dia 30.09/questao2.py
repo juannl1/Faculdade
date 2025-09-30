@@ -28,6 +28,6 @@ elif opcoes == 'circulo' or opcoes == 'círculo':
 
 else:
     print("Entrada Inválida.\n\nTente Novamente...")
-    
+
 
 
