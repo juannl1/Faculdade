@@ -1,12 +1,9 @@
 #Juan Dos Anjos lemos
-#202515173
+#202515173  
 
 print("Calculo de área\n")
 
 opcoes = str(input("Você quer calcular qual ?\nQuadrado\nTriângulo\nCírculo\n\n > > > ")).strip().lower()
-
-
-
 
 if opcoes == 'quadrado':
     lado = float(input("Digite o lado do quadrado: "))
