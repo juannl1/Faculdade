@@ -1,4 +1,8 @@
+from re import X
+
+
 nomes = ["Juan", "Maria", "João"]
 
 for x in nomes:
-    print("boa noite", x)
+    if 'o' in x:
+        print("boa noite", x)
