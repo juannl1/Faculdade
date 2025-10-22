@@ -1,0 +1,37 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(236, 131, 131);
+    text-align: center;
+}
+
+h1 {
+    font-size: 90px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h3.titulo-card, h2#titulo-hero {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+
+a {
+  color: white;
+  padding: 16px;
+
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 25px;
+  text-decoration: none;
+  transition: 0.5s;
+  border-radius: 20px;
+
+}
+a:hover {
+    transition: 1s;
+    text-decoration: underline;
+    color: black;
+    background-color: white;
+    border-radius: 40px;
+    border: 1px solid black;
+}
+
