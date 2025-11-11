@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 cadastro = {
     'nome': 'Juan Dos Anjos Lemos', 
     'idade': 19, 
