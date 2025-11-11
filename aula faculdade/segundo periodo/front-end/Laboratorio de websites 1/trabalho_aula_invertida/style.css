@@ -28,14 +28,37 @@ nav {
     padding-top: 50px;
 }
 div#caixa {
-    width: 640px;
-    height: 640px;
+    width: 700px;
+    height: 700px;
+    
     border: 10px solid black;
     border-radius: 50px;
     margin: 30px auto 30px auto;
     
 }
+div#caixa > h2 {
+    text-align: center;
+    padding-bottom: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+div#caixa > p {
+    font-size: 26px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    padding-left: 70px;
+
+}
+div#caixa2 {
+    margin: auto;
+
+    width: 700px;
+    height: 700px;
+    border: 10px solid black;
+    border-radius: 49px;
+}
 img {
+    width: 700px;
+    height: 700px;
     border-radius: 34px;
 }
 section {
