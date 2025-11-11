@@ -13,7 +13,6 @@ while True:
             if numero % 2 == 0:
                 numero = numero // 2
                 print(f"{passos}° Passo. Par: {numero}")
-
             else:
                 numero = (numero * 3) + 1
                 print(f"{passos}° Passo. Impar: {numero}")
