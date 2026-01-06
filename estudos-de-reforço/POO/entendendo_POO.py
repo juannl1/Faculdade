@@ -24,3 +24,6 @@ vendedor2.vendeu(400)
 vendedor2.bateu_meta(500)
 
 
+
+
+
