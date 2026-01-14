@@ -5,13 +5,13 @@ from datetime import datetime, timedelta
 class FormularioOnibus():
     def __init__(self, matricula, ponto_de_controle, dia, numero_da_linha, numero_do_carro, matricula_do_motorista, hora_de_saida, hora_de_chegada, roleta_inicial, roleta_local):
         
-        self.matricula = matricula
+        self.matricula = matricula # poderia ter uma verificação em um possivel banco de dados
         self.ponto_de_controle = ponto_de_controle
-        self.dia = dia
+        self.dia = dia # contém verificação
         self.numero_da_linha = numero_da_linha
         self.numero_do_carro = numero_do_carro
-        self.matricula_do_motorista = matricula_do_motorista
-        self.hora_de_saida = hora_de_saida
+        self.matricula_do_motorista = matricula_do_motorista # poderia ter uma verificação em um possivel banco de dados
+        self.hora_de_saida = hora_de_saida 
         self.hora_de_chegada = hora_de_chegada
         self.roleta_inicial = roleta_inicial
         self.roleta_local = roleta_local
@@ -34,10 +34,10 @@ class FormularioOnibus():
             print(f"O Ônibus com vaga {calculo_de_pessoas_no_onibus}/52")
     
 
-    # Verificando se o input é > 31
+    # Verificando se o a data está entre 1 a 31
     def verificar_data_correta(self, dia):
-        if dia >= 1 and dia <= 31:
-            self.dia
+        if dia <= 1 and dia >= 31:
+            self.dia = dia
         else:
             raise ValueError # Caindo no erro de valor para o programa perguntar de novo o dia correto
         
@@ -60,11 +60,33 @@ class FormularioOnibus():
 # INICIANDO FORMULÁRIO
 
 while True:
+    try:
+        matricula_do_fiscal = int(input("Número da matrícula: "))
+        break
+    except ValueError:
+        print("Tente novamente...\n")
+
+while True:
+    try:
+        ponto_de_controle = int(input("1.ESTAÇÃO N.S. MERCÊS (RIO)\n2.ESTAÇÃO JOÃO BRASIL (NIT)\n3.ESTAÇÃO N.S. MERCÊS (VOLTA)\n4.ESTAÇÃO JOÃO BRASIL (VOLTA)\n5.TRIBOBÓ VOLTA (RIO)\n6.TRIBOBÓ VOLTA (NIT)\n"))
+
+        if ponto_de_controle in [1 ,2 ,3 ,4 ,5 ,6]:
+            break
+        else:
+            
+            ValueError
+
+    except ValueError:
+        
+
+
+
+"""while True:
 
     try:
         matricula_do_fiscal = int(input("Número da matrícula: "))
 
-    except ValueError:
+    except:
         print("Tente novamente...")
 
     try:
@@ -75,25 +97,29 @@ while True:
         
     except ValueError:
         print("Tente novamente...")
+        raise ValueError
 
     try:
-        dia = int(input("Data: "))
-        FormularioOnibus.verificar_data_correta(dia)
+        dia_de_hoje = int(input("Dia de hoje: "))
+        FormularioOnibus.verificar_data_correta(dia_de_hoje)
 
     except ValueError:
         print("Tente novamente...")
+        raise ValueError
 
     try:
         numero_do_carro = int(input("Número do carro: "))
 
     except ValueError:
         print("Tente novamente...")
+        raise ValueError
 
     try:
         matricula_do_motorista = int(input("Matrícula do motorista: "))
 
     except ValueError:
         print("Tente novamente...")
+        raise ValueError
     
     try:
         entrada = input("Hora de saída (ex: 07:50): ")
@@ -104,6 +130,7 @@ while True:
 
     except ValueError:
         print("Tente novamente...")
+        raise ValueError
     
     try:
         roleta_inicial = int(input("Roleta inicial: "))
@@ -115,7 +142,8 @@ while True:
 
     except ValueError:
         print("Tente novamente...")
-    break
+        raise ValueError
+    break"""
     
-infos_do_carro = FormularioOnibus(matricula_do_fiscal, ponto_de_controle, dia, numero_da_linha, numero_do_carro, matricula_do_motorista, hora_de_saida, hora_de_chegada, roleta_inicial, roleta_local)
+#infos_do_carro = FormularioOnibus(matricula_do_fiscal, ponto_de_controle, dia, numero_da_linha, numero_do_carro, matricula_do_motorista, hora_de_saida, hora_de_chegada, roleta_inicial, roleta_local)
 
