@@ -6,8 +6,8 @@ class FormularioOnibus():
     def __init__(self):
         
         self.matricula_fiscal = None 
-        self.numero_da_linha = None
-        self.ponto_de_controle = None
+        self.numero_da_linha = None #posição na lista
+        self.ponto_de_controle = None #posição na lista
         self.numero_do_carro = None
         self.matricula_do_motorista = None
         self.hora_de_saida = None
@@ -18,33 +18,22 @@ class FormularioOnibus():
         self.data_anotacao = None
         self.hora_anotacao = None
 
-        pontos_de_contole = ["ESTAÇÃO N.S. MERCÊS (RIO)", "ESTAÇÃO JOÃO BRASIL (NIT)", "ESTAÇÃO N.S. MERCÊS (VOLTA)", "ESTAÇÃO JOÃO BRASIL (VOLTA)", "TRIBOBÓ VOLTA (RIO)", "TRIBOBÓ VOLTA (NIT)", "TRIBOBÓ URB"]
-        linhas = ["2144R", "2146D", "4144R", "4146D", "6146D", "2590R"]
-
-        posicao_na_numero_da_linha = numero_da_linha - 1
-        self.numero_da_linha = linhas[posicao_na_numero_da_linha]
-
-        posicao_na_lista_pontos_de_controle = ponto_de_controle - 1
-        self.ponto_de_controle = pontos_de_contole[posicao_na_lista_pontos_de_controle]
-
-
 # Métodos
 
     # Verificar se há pessoas em pé no carro
-
     def verificar_lotacao(self, roleta_inicial, roleta_local):
         calculo_de_pessoas_no_onibus = roleta_local - roleta_inicial
         calculo_de_pessoas_em_pe = calculo_de_pessoas_no_onibus - 52
 
         if calculo_de_pessoas_no_onibus > 52:
-            print(f"O Ônibus está lotado {calculo_de_pessoas_no_onibus}/52\n{calculo_de_pessoas_em_pe} pessoas em pé")
-        
+            print(f"O Ônibus está lotado {calculo_de_pessoas_no_onibus}/52\n{calculo_de_pessoas_em_pe} pessoas em pé\n\n")
+
         elif calculo_de_pessoas_no_onibus < 52:
             calculo_vagas = 52 - calculo_de_pessoas_no_onibus 
-            print(f"O Ônibus com {calculo_vagas} vagas\n Vagas no Ônibus{calculo_de_pessoas_no_onibus}/52")
+            print(f"O Ônibus com {calculo_vagas} vagas\n Vagas no Ônibus{calculo_de_pessoas_no_onibus}/52\n\n")
 
         else:
-            print("O Ônibus está lotado...\nVagas no Ônibus 52/52")
+            print("O Ônibus está lotado...\nVagas no Ônibus 52/52\n\n")
 
 
     def verificar_data(self):
@@ -54,23 +43,20 @@ class FormularioOnibus():
         
     
     # Verificando quanto tempo demorou para chegar no destino
-    def calcular_percurso(self, hora_entrada, hora_chegada):
+    def calcular_percurso(self, hora_de_saida, hora_chegada):
         # 1. Limpeza e padronização dos inputs
         def limpar(h):
             h = h.replace(":", "").strip()
-            return h.zfill(4) # Garante 4 dígitos (ex: "730" vira "0730")
+            return h.zfill(4) # 4 dígitos (ex: "730" vira "0730")
 
-        saida_limpa = limpar(hora_entrada)
+        saida_limpa = limpar(hora_de_saida)
         chegada_limpa = limpar(hora_chegada)
 
         # 2. Converte para objetos datetime para poder calcular
-        formato = "%H%M"
-        obj_saida = datetime.strptime(saida_limpa, formato)
-        obj_chegada = datetime.strptime(chegada_limpa, formato)
+        obj_saida = datetime.strptime(saida_limpa, "%H%M")
+        obj_chegada = datetime.strptime(chegada_limpa, "%H%M")
 
         # 3. CALCULA O TEMPO DE VIAGEM
-        # Se a chegada for menor que a saída, o codigo quebraria. 
-        # Esta parte previne erro caso a viagem passe da meia-noite.
         if obj_chegada < obj_saida:
             duracao = (obj_chegada + timedelta(days=1)) - obj_saida
         else:
@@ -81,13 +67,13 @@ class FormularioOnibus():
         horas = total_segundos // 3600
         minutos = (total_segundos % 3600) // 60
         self.tempo_viagem_total = f"{horas:02d}:{minutos:02d}"
-        
-        
 
         # Retornamos os objetos caso você precise usar as horas individualmente depois
-        return obj_saida, obj_chegada
+        return obj_saida.strftime("%H:%M"), obj_chegada.strftime("%H:%M")
 
-    #def salvando_itens():
+
+
+
 
 
 # INICIANDO FORM
@@ -107,11 +93,13 @@ def iniciar_programa():
 
     while True:
         try:
-            
-            numero_da_linha = int(input("1. 2144R\n2. 2146D\n3. 4144R\n4. 4146D\n5. 6146D\n6. 2590R\nEscolha a linha: "))
-            if numero_da_linha in [1 ,2 ,3 ,4 ,5 ,6]:
-                form.numero_da_linha = numero_da_linha
+            lista_de_linhas = ["2144R", "2146D", "4144R", "4146D", "6146D", "2590R"]
+            numero_da_linha = int(input("1. 2144R\n2. 2146D\n3. 4144R\n4. 4146D\n5. 6146D\n6. 2590R\n\nEscolha a linha: "))
 
+            posicao_do_numero_da_linha = numero_da_linha - 1 #posicao na lista
+
+            if numero_da_linha in [1 ,2 ,3 ,4 ,5 ,6]:
+                form.numero_da_linha = lista_de_linhas[posicao_do_numero_da_linha]
                 break
 
             else:
@@ -123,16 +111,15 @@ def iniciar_programa():
     while True:
         try:
 
-            pontos_de_contole = ["ESTAÇÃO N.S. MERCÊS (RIO)", "ESTAÇÃO JOÃO BRASIL (NIT)", "ESTAÇÃO N.S. MERCÊS (VOLTA)", "ESTAÇÃO JOÃO BRASIL (VOLTA)", "TRIBOBÓ VOLTA (RIO)", "TRIBOBÓ VOLTA (NIT)", "TRIBOBÓ URB"]
+            lista_pontos_de_controle = ["ESTAÇÃO N.S. MERCÊS (RIO)", "ESTAÇÃO JOÃO BRASIL (NIT)", "ESTAÇÃO N.S. MERCÊS (VOLTA)", "ESTAÇÃO JOÃO BRASIL (VOLTA)", "TRIBOBÓ VOLTA (RIO)", "TRIBOBÓ VOLTA (NIT)", "TRIBOBÓ URB"]
 
-            posicao_do_ponto_de_controle = int(input("\n1.ESTAÇÃO N.S. MERCÊS (RIO)\n2.ESTAÇÃO JOÃO BRASIL (NIT)\n3.ESTAÇÃO N.S. MERCÊS (VOLTA)\n4.ESTAÇÃO JOÃO BRASIL (VOLTA)\n5.TRIBOBÓ VOLTA (RIO)\n6.TRIBOBÓ VOLTA (NIT)\nEscolha o ponto de controle: "))
+            ponto_de_controle = int(input("\n1.ESTAÇÃO N.S. MERCÊS (RIO)\n2.ESTAÇÃO JOÃO BRASIL (NIT)\n3.ESTAÇÃO N.S. MERCÊS (VOLTA)\n4.ESTAÇÃO JOÃO BRASIL (VOLTA)\n5.TRIBOBÓ VOLTA (RIO)\n6.TRIBOBÓ VOLTA (NIT)\n7. TRIBOBÓ URB\n\nEscolha o ponto de controle: "))
 
-            ponto_de_controle_escolhido = pontos_de_contole[posicao_do_ponto_de_controle]
-            
-        
-            if posicao_do_ponto_de_controle in [1 ,2 ,3 ,4 ,5 ,6]:
-                form.ponto_de_controle = posicao_do_ponto_de_controle
-                
+            posicao_ponto_de_controle = ponto_de_controle - 1 #posicao na lista
+
+            if ponto_de_controle in [1 ,2 ,3 ,4 ,5 ,6]:
+                form.ponto_de_controle = lista_pontos_de_controle[posicao_ponto_de_controle]
+    
                 break
             else:
                 raise ValueError
@@ -156,7 +143,6 @@ def iniciar_programa():
 
     while True:
         try:
-            
             matricula_do_motorista = int(input("\nMatrícula do motorista: ")) # Upgrade futuro: consultar a matrícula no banco de dados(.json)
             form.matricula_do_motorista = matricula_do_motorista
             break
@@ -172,10 +158,7 @@ def iniciar_programa():
             # 1. Calcule o percurso (que já salva o tempo de viagem)
             form.hora_de_saida, form.hora_de_chegada = form.calcular_percurso(entrada, chegada)
             
-            # 2. CHAME A FUNÇÃO AGORA PARA PREENCHER A DATA/HORA DA ANOTAÇÃO
             form.verificar_data()
-
-            print("")
             break
 
         except ValueError:
@@ -184,48 +167,61 @@ def iniciar_programa():
     while True:
         try:
             roleta_inicial = int(input("\nRoleta Inicial: "))
-            roleta_final = int(input("Roleta Final: "))
+            roleta_local = int(input("Roleta Final: "))
 
-            form.verificar_lotacao(roleta_inicial, roleta_final)
-            break
+            if roleta_inicial - roleta_local < 72:
+
+                form.roleta_inicial = roleta_inicial
+                form.roleta_local = roleta_local
+
+                break
+            else:
+                print("\nInválido! O número da roleta deu mais de 72/52 passageiros superlotação\n")
+                raise ValueError
+
+            
         except ValueError:
             print("\nInválido! Tente novamente...\n")
 
-    print("----- Relatório -----")
+    print("\n\n----- Relatório -----\n")
     while True:
         try:
+            
+            form.verificar_lotacao(form.roleta_inicial, form.roleta_local)
 
-            salvar_infos = str(input(f"Matricula do fiscal: {form.matricula_fiscal}\nPonto de controle: {form.ponto_de_controle}\nNúmero do Carro: {form.numero_do_carro}\nMatrícula do Motorista: {form.matricula_do_motorista}\nHora de saída: {form.hora_de_saida}\nHora de chegada: {form.hora_de_chegada}\nTempo de viagem total: {form.tempo_viagem_total}\nRoleta Inicial: {form.roleta_inicial}\nRoleta Final: {form.roleta_local}\n\nDeseja salvar as informações ? (s/n): ")).lower().strip
+            verificar_infos = str(input(f"Matricula do fiscal: {form.matricula_fiscal}\nPonto de controle: {form.ponto_de_controle}\nNúmero do Carro: {form.numero_do_carro}\nMatrícula do Motorista: {form.matricula_do_motorista}\nHora de saída: {form.hora_de_saida}\nHora de chegada: {form.hora_de_chegada}\nTempo de viagem total: {form.tempo_viagem_total}\nRoleta Inicial: {form.roleta_inicial}\nRoleta Final: {form.roleta_local}\n\nDeseja salvar as informações ? (s/n): ")).lower().strip()
 
-            if salvar_infos == "s":
+            if verificar_infos == "s":
                 print("Salvando Informações...")
+                break
 
-                
-
-
-            elif salvar_infos == "n":
+            elif verificar_infos == "n":
                 while True:
                     try:
-                        decisao = str(input("Deseja refazer? (s/n): ")).lower().strip
+                        decisao = str(input("Deseja refazer? (s/n): ")).lower().strip()
 
                         if decisao == "s":
                             print("Ok")
                             iniciar_programa()
+                            break
 
                         elif decisao == "n":
-                            print("Ok, finalizando...")
+                            print("\nOk, finalizando...\n")
                             exit()
 
                         else:
                             raise ValueError
+                        
                     except ValueError:
-                        print("\nResposta Inválida\nTente novamente...")
+                        print("\nResposta Inválida\nTente novamente...\n")
+            else:
+                print("\nResposta Inválida\nTente novamente...\n")
+                raise ValueError
+
         except ValueError:
-            print("\nResposta Inválida\nTente novamente...")
+            print("\nResposta Inválida\nTente novamente...\n")
 
         
-
-
 
 
 iniciar_programa()
