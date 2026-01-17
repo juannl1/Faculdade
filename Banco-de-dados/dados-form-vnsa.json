@@ -1,0 +1,20 @@
+[
+    {
+        "11175": {
+            "id-do-registro": 1,
+            "data": [
+                "16/01/2026",
+                "21:55:04"
+            ],
+            "numero_da_linha": "2146D",
+            "ponto_de_controle": "ESTAÇÃO N.S. MERCÊS (RIO)",
+            "numero_do_carro": 1,
+            "matricula_do_motorista": 9774,
+            "hora_de_chegada": "12:04",
+            "hora_de_saida": "10:46",
+            "tempo_de_viagem": "01:18",
+            "roleta_inicial": 51500,
+            "roleta_local": 51523
+        }
+    }
+]

@@ -6,7 +6,7 @@ with open("estudos-de-reforço/estudando-dicionarios/banco-de-dados.json", "r", 
 
 
 
-input_do_usuario = "arraial_do_cabo".replace(" ", "_").lower() # Tirando os underlines do texto e trocando para o espaço " " para o if conseguir achar a cidade
+input_do_usuario = "sao_paulo".replace(" ", "_").lower() # Tirando os underlines do texto e trocando para o espaço " " para o if conseguir achar a cidade
 
 print(20*"=", input_do_usuario.strip().capitalize().replace("_", " "), 20*"=", "\n")
 
